@@ -13,7 +13,7 @@ class Topic(models.Model):
 class Quiz(models.Model):
     name = models.CharField(max_length=30)
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
-    picture = models.ImageField(upload_to ='images/quizes/', default='images\quizes\default_quiz.jpg')
+    picture = models.ImageField(upload_to ='images/quizes/', default='images/quizes/default_quiz.jpg')
     topic = models.ManyToManyField(Topic)
 
 class Score(models.Model):
@@ -31,7 +31,7 @@ class Question(models.Model):
     option4 = models.CharField(max_length=30)
 
 class UserExtras(models.Model):
-    profilePic = models.ImageField(upload_to ='images/quizes/', default='images\profiles\default_profile.jpg')
+    profilePic = models.ImageField(upload_to ='images/quizes/', default='images/profiles/default_profile.jpg')
     followedTopics = models.ManyToManyField(Topic)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
