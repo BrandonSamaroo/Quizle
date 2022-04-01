@@ -19,7 +19,7 @@
                 <ul>
                     {% if user.is_authenticated %}
                     <li>
-                        <a href="{% url 'profile' user.id%}" class="left brand-logo">Your Profile</a>
+                        <a href="{% url 'profile' user.id%}" class="left brand-logo"><img src="{{user.userextras.profilePic.url}}" alt="Profile Picture"></a>
                     </li>
                     {% endif %}
                 </ul>

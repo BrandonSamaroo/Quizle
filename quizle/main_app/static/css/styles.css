@@ -14,3 +14,8 @@ footer.page-footer{
     padding-top: 0;
     text-align: right;
 }
+
+img{
+    width: 60px;
+    height: 60px;
+}

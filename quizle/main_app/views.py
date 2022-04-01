@@ -26,7 +26,8 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('index')
+            UserExtras.objects.create(user = request.user)
+            return redirect('/')
         else:
             error_message = "Invalid Signup - Try Again"
     form = UserCreationForm()
@@ -34,7 +35,8 @@ def signup(request):
     return render(request, 'registration/signup.html', context)
 
 def home(request):
-    return render(request, 'landingpages/home.html')
+    extras = UserExtras.objects.get(user = request.user.id)
+    return render(request, 'landingpages/home.html', {'extras': extras})
 
 class Profile(DetailView):
     model = User
