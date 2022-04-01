@@ -24,4 +24,5 @@ def search(request):
     return render(request, "main_app/search.html")
 
 def create_quiz(request):
-    return render(request, "main_app/create_quiz.html")
+    topics = Topic.objects.all()
+    return render(request, "main_app/create_quiz.html", {'topics': topics})
