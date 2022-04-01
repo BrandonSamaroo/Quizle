@@ -21,7 +21,6 @@ class Score(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
 
-
 class Question(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     question = models.CharField(max_length=100)
@@ -30,7 +29,6 @@ class Question(models.Model):
     option = models.CharField(max_length=30)
     option = models.CharField(max_length=30)
     option = models.CharField(max_length=30)
-
 
 class UserExtras(models.Model):
     profilePic = models.ImageField(upload_to ='images/quizes/', default='images\profiles\default_profile.jpg')
