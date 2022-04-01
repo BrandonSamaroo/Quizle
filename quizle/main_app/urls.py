@@ -5,6 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('accounts/signup', views.signup, name='signup'),
     path("", views.home, name="home"),
     path("accounts/profile/<int:pk>", views.Profile.as_view(), name="profile"),
     path("topics/", views.Topics.as_view(), name="topics"),
