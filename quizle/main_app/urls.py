@@ -10,5 +10,6 @@ urlpatterns = [
     path("accounts/profile/<int:pk>", views.Profile.as_view(), name="profile"),
     path("topics/", views.Topics.as_view(), name="topics"),
     path("search/", views.search, name="search"),
-    path("createquiz/", views.create_quiz, name="create_quiz")
+    path("createquiz/", views.create_quiz, name="create_quiz"),
+    path("createquiz/questions/", views.create_quiz_questions, name="create_quiz_questions")
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

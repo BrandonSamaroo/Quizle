@@ -25,10 +25,10 @@ class Question(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     question = models.CharField(max_length=100)
     answer = models.CharField(max_length=30)
-    option = models.CharField(max_length=30)
-    option = models.CharField(max_length=30)
-    option = models.CharField(max_length=30)
-    option = models.CharField(max_length=30)
+    option1 = models.CharField(max_length=30)
+    option2 = models.CharField(max_length=30)
+    option3 = models.CharField(max_length=30)
+    option4 = models.CharField(max_length=30)
 
 class UserExtras(models.Model):
     profilePic = models.ImageField(upload_to ='images/quizes/', default='images\profiles\default_profile.jpg')

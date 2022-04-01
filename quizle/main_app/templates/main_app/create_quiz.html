@@ -4,5 +4,25 @@
 
 <h1>Create Quiz</h1>
 
-
+<form action="{% url 'create_quiz_questions' %}" method="get">
+    {% csrf_token %}
+    <label for="num_questions">Select how many questions:</label>
+    <input type="number" name="num_questions" max="10" min="1"> 
+    <br>
+    <label for="topic_id">Select a Topic:</label>
+    <div class="input-field">
+    <select name="topic_id" id="topic"style="display: block !important">
+        {% for topic in topics %}
+        <option value="{{topic.id}}">{{topic.name}}</option>
+        {% endfor %}
+    </select>
+    </div>
+    <input type="Submit" value="Submit" class="btn">
+</form>
+<script>
+    document.addEventListener('DOMContentLoaded', ()=>{
+        let selectEl = document.querySelector('select')
+        M.FormSelect.init(selectEl)
+    })
+</script>
  {% endblock %}
