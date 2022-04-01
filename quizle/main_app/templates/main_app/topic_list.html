@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %} Topics {% endblock %}
+{% block content %} 
+
+<h1>View All Topics</h1>
+<hr>
+{% for topic in topic_list %}
+    <h1>{{topic.name}}</h1>
+{% endfor %}
+
+
+ {% endblock %}

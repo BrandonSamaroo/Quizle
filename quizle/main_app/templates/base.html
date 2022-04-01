@@ -19,7 +19,7 @@
                 <ul>
                     {% if user.is_authenticated %}
                     <li>
-                        <a href="{% url 'profile' user.id%}" class="left brand-logo">Profile</a>
+                        <a href="{% url 'profile' user.id%}" class="left brand-logo">Your Profile</a>
                     </li>
                     {% endif %}
                 </ul>
@@ -46,6 +46,25 @@
             </div>
         </nav>
     </header>
+    {% if user.is_authenticated %}
+    <header class="navbar-fixed">
+        <nav>
+            <div class="nav_wrapper">
+                <ul>
+                    <li>
+                        <a href="{% url 'topics' %}" class="left center brand-logo">Topics</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'search' %}" class="center brand-logo">Search</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'create_quiz' %}" class="right brand-logo">Create Quiz</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    {% endif %}
 
     <main class="container">
         {% block content %}

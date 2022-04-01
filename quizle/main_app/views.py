@@ -1,3 +1,4 @@
+from pyexpat import model
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Topic,Quiz,Score,Question, UserExtras
@@ -15,3 +16,12 @@ def home(request):
 
 class Profile(DetailView):
     model = User
+
+class Topics(ListView):
+    model = Topic
+
+def search(request):
+    return render(request, "main_app/search.html")
+
+def create_quiz(request):
+    return render(request, "main_app/create_quiz.html")
