@@ -35,8 +35,7 @@ def signup(request):
     return render(request, 'registration/signup.html', context)
 
 def home(request):
-    extras = UserExtras.objects.get(user = request.user.id)
-    return render(request, 'landingpages/home.html', {'extras': extras})
+    return render(request, 'landingpages/home.html')
 
 class Profile(DetailView):
     model = User
@@ -52,5 +51,26 @@ def create_quiz(request):
     return render(request, "main_app/create_quiz.html", {'topics': topics})
 
 def create_quiz_questions(request):
-    print(request.POST)
-    return render(request, "main_app/create_quiz_questions.html")
+    num_questions = request.POST['num_questions']
+    topic_id = request.POST['topic_id']
+    return render(request, "main_app/create_quiz_questions.html", {'range_num_questions': range(int(num_questions)), 'topic_id': topic_id, 'num_questions': num_questions})
+
+
+def create_quiz_post(request):
+    if request.method == 'POST':
+        quiz = Quiz.objects.create(name=request.POST['name'], creator=request.user)
+        Quiz.objects.get(id=quiz.id).topic.add(request.POST['topic_id'])
+        print(request.POST)
+        print(request.POST.getlist('question'))
+        for i in range(len(request.POST.getlist('question'))):
+            answer_number =  request.POST[f'answer{i}']
+            Question.objects.create(
+                quiz=quiz,
+                question=request.POST.getlist('question')[i],
+                option1=request.POST.getlist('option1')[i],
+                option2=request.POST.getlist('option2')[i],
+                option3=request.POST.getlist('option3')[i],
+                option4=request.POST.getlist('option4')[i],
+                answer=request.POST.getlist(f'option{answer_number}')[i]
+            )
+    return redirect('/')

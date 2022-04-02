@@ -19,3 +19,9 @@ img{
     width: 60px;
     height: 60px;
 }
+
+
+.radio-button{
+    opacity: 100% !important;
+    pointer-events: all !important;
+}

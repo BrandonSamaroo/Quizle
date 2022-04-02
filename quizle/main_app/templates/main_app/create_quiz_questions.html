@@ -3,7 +3,30 @@
 {% block content %} 
 
 <h1>Create Quiz Here are the questions</h1>
+<form action="{% url 'create_quiz_post'%}" method="post" enctype= "multipart/form-data">
+    {% csrf_token %}
+    <h5>Enter the Quiz Name: </h5>
+    <input type="text" name="name" placeholder="Quiz Name" required>
+    {% for i in range_num_questions %}
+        <h5>Enter Question: </h5>
+        <input type="text" name="question" placeholder="question" required>
 
+        <input for="1" type="text" name="option1" placeholder="option1" required>
+        <input type="radio" name="answer{{i}}" id="1" value="1" class="radio-button" required>
 
+        <input for="2" type="text" name="option2" placeholder="option2" required>
+        <input type="radio" name="answer{{i}}" id="2" value="2" class="radio-button" required>
+
+        <input for="3" type="text" name="option3" placeholder="option3" required>
+        <input type="radio" name="answer{{i}}" id="3" value="3" class="radio-button" required>
+
+        <input for="4" type="text" name="option4" placeholder="option4" required>
+        <input type="radio" name="answer{{i}}" id="4" value="4" class="radio-button" required>
+        <hr>
+        <br>
+    {% endfor %}
+    <input type="hidden" name="topic_id" id="topic_id" value="{{topic_id}}" required>
+    <input type="submit" value="submit" class="btn">
+</form>
 
  {% endblock %}

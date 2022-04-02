@@ -4,7 +4,7 @@
 
 <h1>Create Quiz</h1>
 
-<form action="{% url 'create_quiz_questions' %}" method="get">
+<form action="{% url 'create_quiz_questions' %}" method="post">
     {% csrf_token %}
     <label for="num_questions">Select how many questions:</label>
     <input type="number" name="num_questions" max="10" min="1"> 
