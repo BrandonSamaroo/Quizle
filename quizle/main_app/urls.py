@@ -9,6 +9,7 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("accounts/profile/<int:pk>", views.Profile.as_view(), name="profile"),
     path("topics/", views.Topics.as_view(), name="topics"),
+    path("topics/create/", views.TopicCreate.as_view(), name="topics_create"),
     path("search/", views.search, name="search"),
     path("createquiz/", views.create_quiz, name="create_quiz"),
     path("createquiz/questions/", views.create_quiz_questions, name="create_quiz_questions"),

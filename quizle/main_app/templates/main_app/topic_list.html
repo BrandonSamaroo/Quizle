@@ -3,10 +3,13 @@
 {% block content %} 
 
 <h1>View All Topics</h1>
+<h5>Head over to "CREATE QUIZ" to make a quiz based on one of these topics!</h5>
 <hr>
 {% for topic in topic_list %}
-    <h1>{{topic.name}}</h1>
+    <h3>{{topic.name}}</h3>
 {% endfor %}
+
+<a href="{% url 'topics_create' %}"> <h2>Add a Topic</h2></a>
 
 
  {% endblock %}

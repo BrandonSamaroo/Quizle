@@ -43,6 +43,11 @@ class Profile(DetailView):
 class Topics(ListView):
     model = Topic
 
+class TopicCreate(CreateView):
+    model = Topic
+    fields = '__all__'
+    success_url = '/topics/'
+
 def search(request):
     return render(request, "main_app/search.html")
 
@@ -74,3 +79,4 @@ def create_quiz_post(request):
                 answer=request.POST.getlist(f'option{answer_number}')[i]
             )
     return redirect('/')
+
