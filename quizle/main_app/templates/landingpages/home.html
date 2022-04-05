@@ -5,7 +5,7 @@
 
 <h1>Welcome to Quizle</h1>
 
-{if user}
+{% if user.is_authenticated %}
 {% for topic in my_following %} 
 <div class='card'>
     <div class="card-content">
@@ -22,5 +22,6 @@
       </div>
 </div>
 {% endfor %}
+{% endif %}
 
 {% endblock %}
