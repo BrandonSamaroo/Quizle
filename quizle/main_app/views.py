@@ -54,6 +54,10 @@ def home(request):
     # quizes = Topic.objects.get.
     return render(request, 'landingpages/home.html', {'my_following': my_following, 'quiz': quiz}) 
 
+def unassoc_topic(request, topic_id, quiz_id):
+    Quiz.objects.get(id=quiz_id).topic.remove(topic_id)
+    return redirect('', quiz_id=quiz_id)
+
 def search(request):
     return render(request, "main_app/search.html")
 
