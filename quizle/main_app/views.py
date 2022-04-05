@@ -48,6 +48,15 @@ class TopicCreate(CreateView):
     fields = '__all__'
     success_url = '/topics/'
 
+def home(request):
+    my_following = UserExtras.objects.get(user=request.user.id).followedTopics.all()
+    # follow = Topics.filter(user = req.user).all()
+    # follow = [f.topic for f in follow]
+    # topic = Topics.object_list.all().distinct()
+    return render(request, 'landingpages/home.html', {'my_following': my_following}) 
+
+    
+
 def search(request):
     return render(request, "main_app/search.html")
 

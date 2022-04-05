@@ -2,6 +2,12 @@
 {% block title %} Home {% endblock %}
 {% block content %} 
 
-<h1></h1>
 
- {% endblock %}
+<h1>hello</h1>
+{% for topic in my_following %}
+    <h3>{{ topic.name }}</h3>
+{% endfor %}
+
+<!-- <script> console.log(my_following) </script> -->
+
+{% endblock %}
