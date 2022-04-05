@@ -12,6 +12,12 @@
         <p>{{ quiz.name }}</p>
         {% endfor %}
     </div>
+    <div class="card-action">
+        <form action="{% url 'unassoc_topic' topic.id quiz.id %}" method="POST">
+          {% csrf_token %}
+          <button type="submit" class="btn">Remove Topic</button>
+        </form>
+      </div>
 </div>
 {% endfor %}
 
