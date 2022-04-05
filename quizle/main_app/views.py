@@ -55,7 +55,7 @@ def home(request):
     return render(request, 'landingpages/home.html', {'my_following': my_following, 'quiz': quiz}) 
 
 def unassoc_topic(request, topic_id):
-    UserExtras.objects.get(user=request.user).followedTopic.remove(topic_id)
+    UserExtras.objects.get(user=request.user).followedTopics.remove(topic_id)
     return redirect('home')
 
 def search(request):
