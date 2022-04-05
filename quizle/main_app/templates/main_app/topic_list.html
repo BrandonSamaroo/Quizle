@@ -8,7 +8,10 @@
 {% for topic in topic_list %}
     <h3>{{topic.name}}</h3>
 {% endfor %}
-
+<form action="" method="POST">
+    {% csrf_token %} 
+    <button type="submit" value="Follow" class="btn">Follow Topic</button>
+</form>
 
 
  {% endblock %}
