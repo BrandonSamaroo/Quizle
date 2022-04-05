@@ -50,12 +50,9 @@ class TopicCreate(CreateView):
 
 def home(request):
     my_following = UserExtras.objects.get(user=request.user.id).followedTopics.all()
-    # follow = Topics.filter(user = req.user).all()
-    # follow = [f.topic for f in follow]
-    # topic = Topics.object_list.all().distinct()
-    return render(request, 'landingpages/home.html', {'my_following': my_following}) 
-
-    
+    quiz = Quiz.objects.all()
+    # quizes = Topic.objects.get.
+    return render(request, 'landingpages/home.html', {'my_following': my_following, 'quiz': quiz}) 
 
 def search(request):
     return render(request, "main_app/search.html")
@@ -88,4 +85,5 @@ def create_quiz_post(request):
                 answer=request.POST.getlist(f'option{answer_number}')[i]
             )
     return redirect('/')
+
 
