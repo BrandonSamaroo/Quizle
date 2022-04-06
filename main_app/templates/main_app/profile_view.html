@@ -11,14 +11,14 @@ last name: {{thisuser.last_name}} <br>
 {% endif %}
 <br>
 <br>
-Brandons Played Quizes: <br>
+{{thisuser.first_name}} Played Quizes: <br>
 {% for quiz in quizes %}
 <a href="{% url 'view_score' quiz.id thisuser.id %}">Quiz Name: {{quiz.name}}</a> <br>
 {% endfor %}
 
 <br>
 
-Quizes Brandon Has Made: <br>
+Quizes {{thisuser.first_name}} Has Made: <br>
 {% for createdquiz in createdquizes %}
 <a href="{% url 'play_quiz' createdquiz.id %}">Play: {{createdquiz.name}}</a> <br>
 {% endfor %}
