@@ -36,43 +36,54 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
-def home(request):
-    return render(request, 'landingpages/home.html')
+@login_required
+def profile(request, user_id):
+    user = User.objects.get(id=user_id)
+    scores = Score.objects.filter(user=user_id)
+    quizes_id = scores.values('quiz_id').distinct()
+    quizes = []
+    for quiz in quizes_id:
+        quizes.append(Quiz.objects.get(id=quiz['quiz_id']))
+    createdquizes = Quiz.objects.filter(creator=user_id)
+    return render(request, 'main_app/profile_view.html', {'thisuser': user, 'quizes': quizes, 'createdquizes': createdquizes}) 
+    
 
-class Profile(DetailView):
-    model = User
-
-class Topics(ListView):
+class Topics(LoginRequiredMixin, ListView):
     model = Topic
 
-class TopicCreate(CreateView):
+class TopicCreate(LoginRequiredMixin, CreateView):
     model = Topic
     fields = '__all__'
     success_url = '/topics/'
-
+ 
+@login_required
 def home(request):
     my_following = UserExtras.objects.get(user=request.user.id).followedTopics.all()
     quiz = Quiz.objects.all()
     # quizes = Topic.objects.get.
     return render(request, 'landingpages/home.html', {'my_following': my_following, 'quiz': quiz}) 
 
+@login_required
 def unassoc_topic(request, topic_id):
     UserExtras.objects.get(user=request.user).followedTopics.remove(topic_id)
     return redirect('home')
 
+@login_required
 def search(request):
     return render(request, "main_app/search.html")
 
+@login_required
 def create_quiz(request):
     topics = Topic.objects.all()
     return render(request, "main_app/create_quiz.html", {'topics': topics})
 
+@login_required
 def create_quiz_questions(request):
     num_questions = request.POST['num_questions']
     topic_id = request.POST['topic_id']
     return render(request, "main_app/create_quiz_questions.html", {'range_num_questions': range(int(num_questions)), 'topic_id': topic_id, 'num_questions': num_questions})
 
-
+@login_required
 def create_quiz_post(request):
     if request.method == 'POST':
         quiz = Quiz.objects.create(name=request.POST['name'], creator=request.user)
@@ -92,14 +103,14 @@ def create_quiz_post(request):
             )
     return redirect('/')
 
-
+@login_required
 def play_quiz(request, quiz_id):
     quiz = Quiz.objects.get(id=quiz_id)
     questions = Question.objects.filter(quiz=quiz_id)
     print(questions)
     return render(request, "main_app/play_quiz.html", {'quiz': quiz, 'questions': questions})
 
-
+@login_required
 def play_quiz_post(request, quiz_id):
     score = 0 
     qanda = []
@@ -117,6 +128,16 @@ def play_quiz_post(request, quiz_id):
     total = len(request.POST.getlist('answers'))
     return render(request, "main_app/post_quiz.html", {'qanda': qanda, 'score': score, 'total': total})
 
+@login_required
 def view_score(request, quiz_id, user_id):
     scores = Score.objects.filter(quiz=quiz_id, user=user_id)
     return render(request, "main_app/quiz_score.html", {'scores': scores})
+
+@login_required
+def profile_edit(request):
+    return render(request, "main_app/profile_edit.html")
+
+
+@login_required
+def profile_edit_post(request):
+    return reverse("profile", kwargs={"user_id": request.user.id})

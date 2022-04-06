@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %} {{thisuser.username}} {% endblock %}
+{% block content %} 
+
+username: {{thisuser.username}} <br>
+profile pic: <img src="{{thisuser.userextras.profilePic.url}}" alt=""> <br>
+first name: {{thisuser.first_name}} <br>
+last name: {{thisuser.last_name}} <br>
+{% if thisuser.id == user.id %}
+<a href="{%url 'profile_edit'%}">Edit Profile</a>
+{% endif %}
+<br>
+<br>
+Brandons Played Quizes: <br>
+{% for quiz in quizes %}
+<a href="{% url 'view_score' quiz.id thisuser.id %}">Quiz Name: {{quiz.name}}</a> <br>
+{% endfor %}
+
+<br>
+
+Quizes Brandon Has Made: <br>
+{% for createdquiz in createdquizes %}
+<a href="{% url 'play_quiz' createdquiz.id %}">Play: {{createdquiz.name}}</a> <br>
+{% endfor %}
+
+
+ {% endblock %}
