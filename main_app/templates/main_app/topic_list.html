@@ -6,12 +6,11 @@
 <h5>Head over to "CREATE QUIZ" to make a quiz based on one of these topics!</h5>
 <hr>
 <div class='card'>
+  {% for topic in topic_list %}
     <div class="card-content">
-        {% for topic in topic_list %}
         <span class="card-title">{{topic.name}}</span>
-        {% endfor %}
-    </div>
-    <div class="card-action">
+      </div>
+      <div class="card-action">
         <form action="{% url 'unassoc_topic' topic.id %}" method="POST">
           {% csrf_token %}
           <button type="submit" class="btn">Unfollow Topic</button>
@@ -20,10 +19,12 @@
       <div class="card-action">
         <form action="{% url 'assoc_topic' topic.id %}" method="POST">
           {% csrf_token %}
+          
           <button type="submit" class="btn">Follow Topic</button>
-        </form>
-      </div>
-</div>
-
+      </form>
+    </div>
+    {% endfor %}
+  </div>
+    
 
  {% endblock %}

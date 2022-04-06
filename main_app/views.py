@@ -74,6 +74,11 @@ def unassoc_topic(request, topic_id):
     return redirect('home')
 
 @login_required
+def assoc_topic(request, topic_id):
+    UserExtras.objects.get(user=request.user).followedTopics.add(topic_id)
+    return redirect('home')
+
+@login_required
 def search(request):
     return render(request, "main_app/search.html")
 

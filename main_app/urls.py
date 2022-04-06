@@ -16,6 +16,7 @@ urlpatterns = [
     path("createquiz/questions/", views.create_quiz_questions, name="create_quiz_questions"),
     path("createquiz/post/", views.create_quiz_post, name="create_quiz_post"),
     path('topics/<int:topic_id>/unassoc_topic/', views.unassoc_topic, name='unassoc_topic'),
+    path('topics/<int:topic_id>/assoc_topic/', views.assoc_topic, name='assoc_topic'),
     path('play/<int:quiz_id>', views.play_quiz, name="play_quiz"),
     path('play/<int:quiz_id>/post', views.play_quiz_post, name="play_quiz_post"),
     path('score/<int:quiz_id>/<int:user_id>', views.view_score, name="view_score")
