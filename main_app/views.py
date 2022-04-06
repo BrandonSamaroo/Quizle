@@ -66,7 +66,7 @@ def home(request):
         home_following.append({'quizes': Quiz.objects.filter(topic=following), 'topic': following})
     print(home_following)
     # quizes = Topic.objects.get.
-    return render(request, 'landingpages/home.html', {'home_following': home_following}) 
+    return render(request, 'landingpages/home.html', {'home_following': home_following})
 
 @login_required
 def unassoc_topic(request, topic_id):
