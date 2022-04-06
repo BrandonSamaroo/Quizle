@@ -55,7 +55,10 @@ class TopicCreate(LoginRequiredMixin, CreateView):
     model = Topic
     fields = '__all__'
     success_url = '/topics/'
- 
+
+class Profile(DetailView):
+    model = User
+
 @login_required
 def home(request):
     my_following = UserExtras.objects.get(user=request.user.id).followedTopics.all()
@@ -68,11 +71,11 @@ def unassoc_topic(request, topic_id):
     UserExtras.objects.get(user=request.user).followedTopics.remove(topic_id)
     return redirect('home')
 
+
 @login_required
 def search(request):
     return render(request, "main_app/search.html")
 
-@login_required
 def create_quiz(request):
     topics = Topic.objects.all()
     return render(request, "main_app/create_quiz.html", {'topics': topics})
@@ -82,6 +85,7 @@ def create_quiz_questions(request):
     num_questions = request.POST['num_questions']
     topic_id = request.POST['topic_id']
     return render(request, "main_app/create_quiz_questions.html", {'range_num_questions': range(int(num_questions)), 'topic_id': topic_id, 'num_questions': num_questions})
+
 
 @login_required
 def create_quiz_post(request):
@@ -103,12 +107,14 @@ def create_quiz_post(request):
             )
     return redirect('/')
 
+
 @login_required
 def play_quiz(request, quiz_id):
     quiz = Quiz.objects.get(id=quiz_id)
     questions = Question.objects.filter(quiz=quiz_id)
     print(questions)
     return render(request, "main_app/play_quiz.html", {'quiz': quiz, 'questions': questions})
+
 
 @login_required
 def play_quiz_post(request, quiz_id):
@@ -127,6 +133,7 @@ def play_quiz_post(request, quiz_id):
     score = Score.objects.create(score=score, user=request.user, quiz=quiz)
     total = len(request.POST.getlist('answers'))
     return render(request, "main_app/post_quiz.html", {'qanda': qanda, 'score': score, 'total': total})
+
 
 @login_required
 def view_score(request, quiz_id, user_id):
