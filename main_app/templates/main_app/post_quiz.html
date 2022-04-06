@@ -10,12 +10,12 @@
             <span class="card-title">Question: {{x.question}}</span>
             <p>Correct Answer: {{x.correctanswer}}</p>
             <p>Given Answer: {{x.givenanswer}}</p>
-            {% if x.isCorrect % }
+            {% if x.isCorrect %}
             <p>Congratulations! You guessed the correct answer!</p>
             {% else %}
             <p>You did not guess the correct answer!</p>
             {% endif %}
-            <p>Total Score: {{score.score}}/{{total}</p>
+            <p>Total Score: {{score.score}}/{{total}}</p>
         </div>
 {% endfor %}
 
