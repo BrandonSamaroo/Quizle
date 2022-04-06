@@ -3,6 +3,7 @@
 {% block content %} 
 
 <h1>Play {{quiz.name}}</h1>
+<img src="{{quiz.picture.url}}" alt="">
 
 <form action="{% url 'play_quiz_post' quiz.id%}" method="post" enctype= "multipart/form-data">
     {% csrf_token %}

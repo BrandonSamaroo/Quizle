@@ -1,4 +1,5 @@
 from pyexpat import model
+import re
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Topic,Quiz,Score,Question, UserExtras
@@ -9,8 +10,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse
-
 
 # Use @login_required for functions 
 # Pass LoginRequiredMixin as a parameter for classes
@@ -147,4 +146,14 @@ def profile_edit(request):
 
 @login_required
 def profile_edit_post(request):
-    return reverse("profile", kwargs={"user_id": request.user.id})
+    userextras = UserExtras.objects.get(user=request.user.id)
+    if request.FILES:
+        userextras.profilePic = request.FILES['img']
+        userextras.save()
+    if request.POST['first_name'] != '' or request.user.first_name:
+        request.user.first_name =  request.POST['first_name']
+        request.user.save()
+    if request.POST['last_name'] != '' or request.user.first_name:
+        request.user.last_name =  request.POST['last_name']
+        request.user.save()
+    return redirect(f"/accounts/profile/{request.user.id}")

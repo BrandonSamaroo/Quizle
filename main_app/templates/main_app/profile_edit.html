@@ -2,8 +2,13 @@
 {% block title %} Edit {{user.username}} {% endblock %}
 {% block content %} 
 
-<form action="{% url 'profile_edit_post' %}" method="post">
+<h1>Edit You Account</h1>
+
+<form action="{% url 'profile_edit_post' %}" method="post" enctype= "multipart/form-data"> 
     {% csrf_token %}
+    change profile pic: <input type="file" id="img" name="img" accept="image/*"> <br>
+    first name: <input type="text" name="first_name" placeholder="{{user.first_name}}"> <br>
+    last name: <input type="text" name="last_name" placeholder="{{user.last_name}}"> <br>
     <input type="submit" value="submit">
 </form>
 

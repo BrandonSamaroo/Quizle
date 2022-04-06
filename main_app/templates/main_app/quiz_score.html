@@ -2,7 +2,12 @@
 {% block title %} Quiz Score {% endblock %}
 {% block content %} 
 
-<h1>{{quiz.name}} Score</h1>
+<h1>Play: <a href="{% url 'play_quiz' scores.0.quiz.id %}">{{scores.0.quiz.name}}</a></h1>
+<h1>Scores</h1>
+{% for score in scores %}
+Attempt 1: {{score.score}}
+
+{% endfor %}
 
 
  {% endblock %}

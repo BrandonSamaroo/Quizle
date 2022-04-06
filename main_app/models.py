@@ -31,7 +31,7 @@ class Question(models.Model):
     option4 = models.CharField(max_length=30)
 
 class UserExtras(models.Model):
-    profilePic = models.ImageField(upload_to ='images/quizes/', default='images/profiles/default_profile.jpg')
+    profilePic = models.ImageField(upload_to ='images/profiles/', default='images/profiles/default_profile.jpg')
     followedTopics = models.ManyToManyField(Topic)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
