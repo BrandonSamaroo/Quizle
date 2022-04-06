@@ -61,20 +61,23 @@ class Profile(DetailView):
 @login_required
 def home(request):
     my_following = UserExtras.objects.get(user=request.user.id).followedTopics.all()
-    quiz = Quiz.objects.all()
+    home_following = []
+    for following in my_following:
+        home_following.append({'quizes': Quiz.objects.filter(topic=following), 'topic': following})
+    print(home_following)
     # quizes = Topic.objects.get.
-    return render(request, 'landingpages/home.html', {'my_following': my_following, 'quiz': quiz}) 
+    return render(request, 'landingpages/home.html', {'home_following': home_following}) 
 
 @login_required
 def unassoc_topic(request, topic_id):
     UserExtras.objects.get(user=request.user).followedTopics.remove(topic_id)
     return redirect('home')
 
-
 @login_required
 def search(request):
     return render(request, "main_app/search.html")
 
+@login_required
 def create_quiz(request):
     topics = Topic.objects.all()
     return render(request, "main_app/create_quiz.html", {'topics': topics})

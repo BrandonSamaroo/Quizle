@@ -5,19 +5,18 @@
 
 <h1>Welcome to Quizle</h1>
 
-{% if user.is_authenticated %}
-{% for topic in my_following %} 
-<div class='card'>
-    <div class="card-content">
-        <span class="card-title">{{topic.name}}</span>
-        {% for quiz in quiz %} 
-        <p>{{ quiz.name }}</p>
+{% for following in home_following %}
+    Topic: {{following.topic.name}} <br>
+    {% if following.quizes %}
+        {% for quiz in following.quizes %}
+            <a href="{%url 'play_quiz' quiz.id%}"> Quiz: {{quiz.name}}</a>
+            <br>
         {% endfor %}
-    </div>
-</div>
+    {% else %}
+        No Quizes Availablesdsdsdsad
+    {% endif %}
+    <br>
+    <br>
 {% endfor %}
-{% else % }
-<h1>No Followed Topics</h1>
-{% endif %}
 
 {% endblock %}
