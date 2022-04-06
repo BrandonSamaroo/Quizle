@@ -143,7 +143,9 @@ def play_quiz_post(request, quiz_id):
 @login_required
 def view_score(request, quiz_id, user_id):
     scores = Score.objects.filter(quiz=quiz_id, user=user_id)
-    return render(request, "main_app/quiz_score.html", {'scores': scores})
+    questions =  len(Question.objects.filter(quiz=scores[0].quiz.id))
+    print(questions)
+    return render(request, "main_app/quiz_score.html", {'scores': scores, 'questions': questions})
 
 @login_required
 def profile_edit(request):
