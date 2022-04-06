@@ -9,6 +9,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse
+
 
 # Use @login_required for functions 
 # Pass LoginRequiredMixin as a parameter for classes
@@ -91,3 +93,30 @@ def create_quiz_post(request):
     return redirect('/')
 
 
+def play_quiz(request, quiz_id):
+    quiz = Quiz.objects.get(id=quiz_id)
+    questions = Question.objects.filter(quiz=quiz_id)
+    print(questions)
+    return render(request, "main_app/play_quiz.html", {'quiz': quiz, 'questions': questions})
+
+
+def play_quiz_post(request, quiz_id):
+    score = 0 
+    qanda = []
+    
+    for count, answer in enumerate(request.POST.getlist('answers')):
+        question = Question.objects.get(quiz=quiz_id, answer=answer)
+        isCorrect = False
+        if request.POST[f'guess{count}'] == answer:
+            score+=1
+            isCorrect = True
+        qanda.append({'question': question.question, 'correctanswer': answer, 'givenanswer': request.POST[f'guess{count}'], 'isCorrect': isCorrect})
+    print(qanda)
+    quiz = Quiz.objects.get(id=quiz_id)
+    Score.objects.create(score=score, user=request.user, quiz=quiz)
+    return render(request, "main_app/post_quiz.html", {'qanda': qanda})
+
+def view_score(request, quiz_id, user_id):
+    scores = Score.objects.filter(quiz=quiz_id, user=user_id)
+
+    return render(request, "main_app/quiz_score.html", {'scores': scores})

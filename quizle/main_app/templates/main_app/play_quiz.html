@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %} Play Quiz {% endblock %}
+{% block content %} 
+
+<h1>Play {{quiz.name}}</h1>
+
+<form action="{% url 'play_quiz_post' quiz.id%}" method="post" enctype= "multipart/form-data">
+    {% csrf_token %}
+    {% for question in questions %}
+        <h5>Question: </h5>
+        <label >{{question.question}}</label>
+
+        <br>
+
+        <label for="1" name="option1">{{question.option1}}</label>
+        <input type="radio" name="guess{{ forloop.counter0 }}" id="1" value="{{question.option1}}" class="radio-button" required>
+
+        <br>
+
+        <label for="2" name="option2">{{question.option2}}</label>
+        <input type="radio" name="guess{{ forloop.counter0 }}" id="2" value="{{question.option2}}" class="radio-button" required>
+
+        <br>
+
+        <label for="3" name="option3">{{question.option3}}</label>
+        <input type="radio" name="guess{{ forloop.counter0 }}" id="3" value="{{question.option3}}" class="radio-button" required>
+        
+        <br>
+
+        <label for="4" name="option4">{{question.option4}}</label>
+        <input type="radio" name="guess{{ forloop.counter0 }}" id="4" value="{{question.option4}}" class="radio-button" required>
+
+        <input type="hidden" value="{{question.answer}}" name="answers">
+        <br>
+        <br>
+    {% endfor %}
+    <input type="submit" value="submit" class="btn">
+</form>
+ {% endblock %}
