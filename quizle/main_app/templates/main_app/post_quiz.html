@@ -4,14 +4,12 @@
 
 <h1>Quiz Stats</h1>
 {% for x in qanda %}
-    {{x.question}}
-    {{x.correctanswer}}
-    {{x.givenanswer}}
-    {{x.isCorrect}}
-
+    Question: {{x.question}} <br>
+    Correct Answer: {{x.correctanswer}} <br>
+    Given Answer: {{x.givenanswer}} <br>
+    Is Correct? {{x.isCorrect}} <br>
     <br>
-    <br>
-
 {% endfor %}
+<h5>Total Score: {{score.score}}/{{total}}</h5>
 
- {% endblock %}
+{% endblock %}

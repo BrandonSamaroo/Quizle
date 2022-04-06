@@ -113,10 +113,10 @@ def play_quiz_post(request, quiz_id):
         qanda.append({'question': question.question, 'correctanswer': answer, 'givenanswer': request.POST[f'guess{count}'], 'isCorrect': isCorrect})
     print(qanda)
     quiz = Quiz.objects.get(id=quiz_id)
-    Score.objects.create(score=score, user=request.user, quiz=quiz)
-    return render(request, "main_app/post_quiz.html", {'qanda': qanda})
+    score = Score.objects.create(score=score, user=request.user, quiz=quiz)
+    total = len(request.POST.getlist('answers'))
+    return render(request, "main_app/post_quiz.html", {'qanda': qanda, 'score': score, 'total': total})
 
 def view_score(request, quiz_id, user_id):
     scores = Score.objects.filter(quiz=quiz_id, user=user_id)
-
     return render(request, "main_app/quiz_score.html", {'scores': scores})
