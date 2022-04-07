@@ -41,3 +41,9 @@ img{
     opacity: 100% !important;
     pointer-events: all !important;
 }
+
+.search-bar{
+    display: flex !important;
+    justify-content: space-evenly !important;
+    width: 100% !important;
+}
