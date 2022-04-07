@@ -54,13 +54,12 @@
                     <li>
                         <a href="{% url 'topics' %}" class="left brand-logo">Topics</a>
                     </li>
-                    <li>
-                    <form class="center brand-logo" method="POST" action="{% url 'search' %}">
-                        {% csrf_token %}
-                    
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
-                        <button class="btn btn-outline-secondary" type="submit">Search</button>
-                      </form>
+                    <li class="center brand-logo">
+                        <form class="search-bar" method="POST" action="{% url 'search' %}">
+                            {% csrf_token %}
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
+                            <button class="btn btn-outline-secondary" type="submit">Search</button>
+                        </form>
                     </li>
                     <li>
                         <a href="{% url 'create_quiz' %}" class="right brand-logo">Create Quiz</a>
