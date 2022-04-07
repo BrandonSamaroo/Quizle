@@ -55,7 +55,12 @@
                         <a href="{% url 'topics' %}" class="left brand-logo">Topics</a>
                     </li>
                     <li>
-                        <a href="{% url 'search' %}" class="center brand-logo">Search</a>
+                    <form class="center brand-logo" method="POST" action="{% url 'search' %}">
+                        {% csrf_token %}
+                    
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
+                        <button class="btn btn-outline-secondary" type="submit">Search</button>
+                      </form>
                     </li>
                     <li>
                         <a href="{% url 'create_quiz' %}" class="right brand-logo">Create Quiz</a>

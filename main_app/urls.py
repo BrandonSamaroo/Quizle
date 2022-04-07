@@ -19,6 +19,5 @@ urlpatterns = [
     path('topics/<int:topic_id>/assoc_topic/', views.assoc_topic, name='assoc_topic'),
     path('play/<int:quiz_id>', views.play_quiz, name="play_quiz"),
     path('play/<int:quiz_id>/post', views.play_quiz_post, name="play_quiz_post"),
-    path('score/<int:quiz_id>/<int:user_id>', views.view_score, name="view_score")
-    # path("topics/follow/", views.follow_topic, name='follow_topic')
+    path('score/<int:quiz_id>/<int:user_id>', views.view_score, name="view_score"),
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

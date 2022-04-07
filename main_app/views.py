@@ -10,6 +10,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Q
 
 # Use @login_required for functions 
 # Pass LoginRequiredMixin as a parameter for classes
@@ -64,8 +65,6 @@ def home(request):
     home_following = []
     for following in my_following:
         home_following.append({'quizes': Quiz.objects.filter(topic=following), 'topic': following})
-    print(home_following)
-    # quizes = Topic.objects.get.
     return render(request, 'landingpages/home.html', {'home_following': home_following}) 
 
 @login_required
@@ -80,7 +79,14 @@ def assoc_topic(request, topic_id):
 
 @login_required
 def search(request):
-    return render(request, "main_app/search.html")
+    if request.method == "POST":
+        searched = request.POST['searched']
+        results = Quiz.objects.filter(Q(creator__username__contains=searched) | Q(name__contains=searched) | Q(topic__name__contains=searched))
+        return render(request, "search/searched.html", {'searched': searched, 'results':results})
+    else: 
+        return render(request, "search/searched.html")
+    
+
 
 @login_required
 def create_quiz(request):
