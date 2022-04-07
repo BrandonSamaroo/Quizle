@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %} 
+
+	{% if searched %}
+		<h1>You Searched For {{ searched }}</h1>
+		<br/>
+
+        {% for quiz in results %}
+			
+        <div class="card">
+<div class="card-header">
+Results: 
+</div>
+<div class="card-body">
+<a class="card-title" href="{% url 'play_quiz' quiz.id %}">{{ quiz.name }}</a>
+
+{% comment %} {% if 'True' == 'True' %}
+True
+{% endif %} {% endcomment %}
+
+    {{quiz.search_found}}
+
+{% if quiz.search_found %}
+
+    <li><a class="card-title" href="{% url 'profile' quiz.creater.id %}">{{ quiz.creator }}</a></li>
+{% endif %} 
+
+
+
+
+    {% endfor %}
+
+
+	{% else %}
+		<h1>Hey! You Forgot To Search...</h1>
+	{% endif %}
+
+	
+{% endblock %}
