@@ -13,14 +13,17 @@
       <div class="card-action">
         <form action="{% url 'unassoc_topic' topic.id %}" method="POST">
           {% csrf_token %}
+          {% if topic in user.userextras.followedTopics.all %}
           <button type="submit" class="btn">Unfollow Topic</button>
+          {% endif %}
         </form>
       </div>
       <div class="card-action">
         <form action="{% url 'assoc_topic' topic.id %}" method="POST">
           {% csrf_token %}
-          
+          {% if topic not in user.userextras.followedTopics.all %}
           <button type="submit" class="btn">Follow Topic</button>
+          {% endif %}
       </form>
     </div>
     {% endfor %}

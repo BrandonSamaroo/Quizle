@@ -65,17 +65,17 @@ def home(request):
     home_following = []
     for following in my_following:
         home_following.append({'quizes': Quiz.objects.filter(topic=following), 'topic': following})
-    return render(request, 'landingpages/home.html', {'home_following': home_following}) 
+    return render(request, 'landingpages/home.html', {'home_following': home_following})
 
 @login_required
 def unassoc_topic(request, topic_id):
     UserExtras.objects.get(user=request.user).followedTopics.remove(topic_id)
-    return redirect('home')
+    return redirect('topics')
 
 @login_required
 def assoc_topic(request, topic_id):
     UserExtras.objects.get(user=request.user).followedTopics.add(topic_id)
-    return redirect('home')
+    return redirect('topics')
 
 @login_required
 def search(request):
@@ -151,7 +151,9 @@ def play_quiz_post(request, quiz_id):
 @login_required
 def view_score(request, quiz_id, user_id):
     scores = Score.objects.filter(quiz=quiz_id, user=user_id)
-    return render(request, "main_app/quiz_score.html", {'scores': scores})
+    questions =  len(Question.objects.filter(quiz=scores[0].quiz.id))
+    print(questions)
+    return render(request, "main_app/quiz_score.html", {'scores': scores, 'questions': questions})
 
 @login_required
 def profile_edit(request):
