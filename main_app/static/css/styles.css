@@ -3,7 +3,7 @@ body{
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    color: black;
+    color: rgb(8, 8, 8);
 }
 
 header nav {
@@ -47,3 +47,4 @@ img{
     justify-content: space-evenly !important;
     width: 100% !important;
 }
+
