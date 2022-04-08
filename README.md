@@ -6,7 +6,7 @@ Quizle is a  game or in which players attempt to answer questions correctly abou
 ### Link: 
 ______________________________________________________________
 
-Please click the following link to visit the website: [Quizle](updated link).
+Please click the following link to visit the website: [Quizle](https://quizlesei.herokuapp.com/).
 
 
 ### Technology
