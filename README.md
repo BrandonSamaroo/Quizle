@@ -3,6 +3,14 @@
 Quizle is a  game or in which players attempt to answer questions correctly about a certain variety of subjects. Quizle can also be used as a brief assessment in education and similar fields to measure growth in knowledge, abilities, or skills.
 
 
+### Creators: 
+______________________________________________________________
+
+1. [Brandon Samaroo](https://github.com/BrandonSamaroo)
+2. [Salman Ghauri](https://github.com/salmanghauri)
+3. [Ali Anjum](https://github.com/alianjumm)
+4. [Mohammad Mansur Ali Khan](https://github.com/mnzvr97)
+
 ### Link: 
 ______________________________________________________________
 
@@ -15,7 +23,7 @@ List of the technologies used:
 
 1. Python
 2. Django
-3. CSS
+3. CSS/HTML
 4. PostgreSQL
 
 
@@ -38,11 +46,13 @@ ______________________________________________________________
 
 ![HomePage](https://i.ibb.co/H4VjZtm/image.png)
 
-![Logging in](image url)
+![game](https://i.imgur.com/bVILzlI.png)
 
-![register](image url)
+![profile](https://i.imgur.com/ZB0Jvxn.png)
 
-![User](image url)
+![login](https://i.imgur.com/ibKbOPF.png)
+
+![registration](https://i.imgur.com/DIMwlns.png)
 
 
 ## Future Steps:
