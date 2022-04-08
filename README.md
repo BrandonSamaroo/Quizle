@@ -36,13 +36,13 @@ The user is able to:
 ### Screenshots:
 ______________________________________________________________
 
-![HomePage](https://i.imgur.com/aRwymxW.png)
+![HomePage](image url)
 
-![Logging in](https://i.imgur.com/fuKt6w9.png)
+![Logging in](image url)
 
-![register](https://i.imgur.com/d13V8uH.png)
+![register](image url)
 
-![User](https://i.imgur.com/OFzOeQV.png)
+![User](image url)
 
 
 ## Future Steps:
