@@ -3,49 +3,40 @@
 {% block content %}
 
 <h1>Play {{quiz.name}}</h1>
-<img src="{{quiz.picture.url}}" alt="">
-<div class="row">
+<div class="row play-quiz">
     <form class="col s12" action="{% url 'play_quiz_post' quiz.id%}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
+        {% for question in questions %}
         <div class="row">
             <div class="input-field col s12">
-                {% for question in questions %}
                 <label>{{question.question}}</label>
             </div>
         </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <label for="1" name="option1">{{question.option1}}</label>
-                <input type="radio" name="guess{{ forloop.counter0 }}" id="1" value="{{question.option1}}"
+                <label name="option1">
+                    <input type="radio" name="guess{{ forloop.counter0 }}" id="1" value="{{question.option1}}"
                     class="radio-button" required>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <label for="2" name="option2">{{question.option2}}</label>
-                <input type="radio" name="guess{{ forloop.counter0 }}" id="2" value="{{question.option2}}"
+                    <div>{{question.option1}}</div>
+                </label>
+                <label name="option2">
+                    <input type="radio" name="guess{{ forloop.counter0 }}" id="2" value="{{question.option2}}"
                     class="radio-button" required>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <label for="3" name="option3">{{question.option3}}</label>
-                <input type="radio" name="guess{{ forloop.counter0 }}" id="3" value="{{question.option3}}"
+                    <div>{{question.option2}}</div>
+                </label>
+                <label name="option3">
+                    <input type="radio" name="guess{{ forloop.counter0 }}" id="3" value="{{question.option3}}"
                     class="radio-button" required>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <label for="4" name="option4">{{question.option4}}</label>
-                <input type="radio" name="guess{{ forloop.counter0 }}" id="4" value="{{question.option4}}"
-                class="radio-button" required>
-            </div>
-        </div>
+                    <div>{{question.option3}}</div>
+                </label>                
+                <label name="option4">
+                    <input type="radio" name="guess{{ forloop.counter0 }}" id="4" value="{{question.option4}}"
+                    class="radio-button" required>
+                    <div>{{question.option4}}</div>
+                </label>
         <input type="hidden" value="{{question.answer}}" name="answers">
         <br>
         <br>
-        <input type="submit" value="submit" class="btn">
         {% endfor %}
+        <input type="submit" value="submit" class="btn">
     </form>
 </div>
 </div>

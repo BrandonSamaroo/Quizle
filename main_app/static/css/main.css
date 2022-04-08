@@ -1,0 +1,279 @@
+body{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    color: rgb(8, 8, 8);
+}
+
+header nav {
+    background-color: #FFF;
+    padding: 1em 0;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: none;
+}
+
+footer div{
+    background: #bdb4ef;
+    font-size: 36px;
+    width: 100%;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+main{
+    flex: 1 0 auto;
+}
+
+footer.page-footer{
+    padding-top: 0;
+    text-align: right;
+}
+
+img{
+    width: 60px;
+    height: 60px;
+}
+
+
+.radio-button{
+    opacity: 100% !important;
+    pointer-events: all !important;
+}
+
+.search-bar{
+    display: flex !important;
+    justify-content: space-evenly !important;
+    width: 100% !important;
+}
+
+nav .brand-logo.center{
+	font-size: 40px;
+	font-weight: 700;
+	color: #7361d7;
+	top: -15px;
+}
+
+nav .brand-logo{
+	top: -15px;
+}
+
+.navbar-fixed:nth-child(2) nav{
+	background: #bdb4ef;
+}
+
+.nav_wrapper{
+	position: relative;
+}
+
+nav .brand-logo.center.search-wrap{
+	height: 100%;
+}
+
+nav .brand-logo.center.search-wrap input{
+	padding: 5px 10px;
+    color: #fff;
+    font-size: 20px;
+    line-height: 1;
+}
+
+nav .brand-logo.center.search-wrap .btn{
+	margin-top: 15px;
+}
+
+.nav-custom-ul{
+	position: relative;
+    max-width: 800px;
+    display: block;
+    margin: 0 auto;
+}
+
+nav ul.registers a{
+	color: #000;
+    font-size: 20px;
+    margin-bottom: 1px;
+    top: -4px;
+    transform: translateY(-10px);
+}
+
+.page-footer{
+	color: #fff;
+    background: #bdb4ef;
+}
+
+/*Home*/
+
+.categories{
+	font-size: 46px;
+	color: #000;
+	text-align: center;
+}
+
+.topic-wrap{
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.topic{
+	flex: 0.2 0 auto;
+	min-width: 250px;
+	color: #FFF;
+	height: 500px;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 20px 10px;
+	border-radius: 5px;
+}
+
+.topic.blue{
+	background: blue;
+}
+
+.topic.pink{
+	background: pink;
+}
+
+.topic.green{
+	background: green;
+}
+
+.topic.yellow{
+	background: yellow;
+}
+
+.topic h2{
+	font-size: 30px;
+	font-weight: 700;
+	text-align: center;
+}
+
+.topic a{
+	color: #FFF;
+}
+
+/* Login & Register */
+
+.login-page, .register-page{
+	max-width: 400px;
+	margin: 50px auto 0;
+	padding: 10px 50px;
+    background: #8093d7;
+    color: #FFF;
+    text-align: center;
+}
+
+.login-page label, .register-page label{
+	color: #FFF;
+	font-size: 16px;
+}
+
+.login-page input[type="submit"], .register-page input[type="submit"]{
+	background: #000;
+	color: #FFF;
+	margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.register-page span.helptext{
+	display: none;
+}
+
+/* Profile page */
+
+.profile-image{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-width: 300px;
+}
+
+.profile-image img{
+	width: 250px;
+	height: 250px;
+	border-radius: 50%;
+}
+
+.profile.card .card-content p{
+	font-size: 20px;
+	margin: 10px 0;
+}
+
+.ml-5{
+	margin-left: 50px;
+}
+
+/* search page */
+.search-result{
+
+}
+
+.search-result h1{
+	font-size: 40px;
+	text-align: center;
+}
+
+.search-result .card{
+	padding: 10px;
+	min-height: 200px;
+	background: #9dd7d4;
+}
+
+.search-result .card-header{
+	font-size: 30px;
+	text-align: center;
+}
+
+.card .card-title{
+	color: #021016;
+}
+
+.text-center{
+	text-align: center !important;
+}
+
+/* Play Quiz Page */
+.play-quiz{
+
+}
+
+.play-quiz input[type=radio]{
+	opacity: 0 !important;
+}
+
+.play-quiz label{
+	display: block;
+	position: relative;
+}
+
+.play-quiz label div{
+	padding: 10px 20px;
+    margin: 10px;
+    background: #8f8fd1;
+    border-radius: 5px;
+    color: #FFF;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.play-quiz label input[type=radio]:checked+div{
+	background: #3737af;
+}
+
+.play-quiz .btn{
+	max-width: 100%;
+    padding: 10px 50px;
+    height: auto;
+    font-size: 30px;
+    margin: 10px;
+}
+
+.play-quiz .input-field label{
+	font-size: 30px;
+    color: #000;
+    text-align: center;
+}
