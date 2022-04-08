@@ -1,1 +1,1 @@
-web: gunicorn catcollector.wsgi
+web: gunicorn quizle.wsgi
