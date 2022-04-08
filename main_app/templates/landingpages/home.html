@@ -3,20 +3,26 @@
 {% block content %} 
 
 
-<h1>Welcome to Quizle</h1>
+<h1 class="categories">Welcome to quizle</h1>
+<div class="topic-wrap">
+    {% for following in home_following %}
 
-{% for following in home_following %}
-    Topic: {{following.topic.name}} <br>
-    {% if following.quizes %}
-        {% for quiz in following.quizes %}
-            <a href="{%url 'play_quiz' quiz.id%}"> Quiz: {{quiz.name}}</a>
-            <br>
-        {% endfor %}
-    {% else %}
-        No Quizes Available
-    {% endif %}
-    <br>
-    <br>
-{% endfor %}
+    <div class="topic {{following.style}}">
+        <h2>{{following.topic.name}} </h2><br>
+        {% if following.quizes %}
+            {% for quiz in following.quizes %}
+            <p>
+                <a href="{%url 'play_quiz' quiz.id%}"> Quiz: {{quiz.name}}</a>
+            </p>
+                <br>
+            {% endfor %}
+        {% else %}
+            No Quizes Available
+        {% endif %}
+        <br>
+        <br>
+    </div>
 
+    {% endfor %}
+</div>
 {% endblock %}

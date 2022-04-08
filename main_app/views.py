@@ -63,8 +63,11 @@ class Profile(DetailView):
 def home(request):
     my_following = UserExtras.objects.get(user=request.user.id).followedTopics.all()
     home_following = []
+    index = 0
+    styles = ['blue', 'pink', 'green', 'yellow']
     for following in my_following:
-        home_following.append({'quizes': Quiz.objects.filter(topic=following), 'topic': following})
+        home_following.append({'quizes': Quiz.objects.filter(topic=following), 'topic': following, 'style': styles[index % 4]})
+        index += 1
     return render(request, 'landingpages/home.html', {'home_following': home_following})
 
 @login_required
