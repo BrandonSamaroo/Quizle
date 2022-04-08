@@ -3,7 +3,7 @@ body{
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    color: rgb(8, 8, 8);
+    color: rgb(0, 0, 0);
 }
 
 header nav {
